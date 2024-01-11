@@ -48,13 +48,15 @@ function createCards() {
 }
 
 function flipCard() {
+  if (this.classList.contains("matched")) return;
+
   if (flippedCards.length === 2 || this === flippedCards[0]) return;
   this.innerHTML = `<i class="fas fa-${this.dataset.value}"></i>`;
   flippedCards.push(this);
   if (flippedCards.length === 2) {
     tries++;
     document.getElementById("tries-counter").innerText = `Tries: ${tries}`;
-    setTimeout(checkForMatch, 1000);
+    setTimeout(checkForMatch, 500);
   }
 }
 
