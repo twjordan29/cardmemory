@@ -54,7 +54,7 @@ function flipCard() {
   if (flippedCards.length === 2) {
     tries++;
     document.getElementById("tries-counter").innerText = `Tries: ${tries}`;
-    setTimeout(checkForMatch, 100);
+    setTimeout(checkForMatch, 1000);
   }
 }
 
