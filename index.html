@@ -19,7 +19,8 @@
   </head>
   <body>
     <div id="start-screen">
-      <h1>Select card game size</h1>
+      <h1>Enter your name and select game size!</h1>
+      <input type="text" id="name-input" placeholder="Enter your name" />
       <div>
         <button onclick="startGame(4)">4</button>
         <button onclick="startGame(6)">6</button>
@@ -29,7 +30,6 @@
       </div>
     </div>
     <div id="game-container" style="display: none">
-      <div id="tries-counter">Tries: 0</div>
       <div id="game-board"></div>
     </div>
 

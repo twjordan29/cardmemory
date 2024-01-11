@@ -3,12 +3,22 @@ let cardElements = [];
 let flippedCards = [];
 let matchedCards = [];
 let tries = 0;
+let startTime, endTime, timerInterval;
+let playerName;
 
 function startGame(numCards) {
+  let nameInput = document.getElementById("name-input");
+
+  playerName = nameInput.value.trim();
+
+  if (!playerName) {
+    toastr.error("Please enter your name!");
+    return;
+  }
+
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("game-container").style.display = "flex";
   document.getElementById("game-board").style.display = "flex";
-  document.getElementById("tries-counter").innerText = "Tries: 0";
   tries = 0;
 
   cards = [];
@@ -27,6 +37,7 @@ function startGame(numCards) {
     cards.push(icons[i]);
   }
   createCards();
+  startTimer();
 }
 
 function createCards() {
@@ -55,7 +66,6 @@ function flipCard() {
   flippedCards.push(this);
   if (flippedCards.length === 2) {
     tries++;
-    document.getElementById("tries-counter").innerText = `Tries: ${tries}`;
     setTimeout(checkForMatch, 500);
   }
 }
@@ -71,8 +81,29 @@ function checkForMatch() {
     });
   }
   flippedCards = [];
-  if (matchedCards.length === cardElements.length)
+
+  if (matchedCards.length === cardElements.length) {
+    endTime = new Date();
+    let timeDiff = (endTime - startTime) / 1000; // in seconds
+
     toastr["success"](
-      "You won in " + tries + " tries! Refresh the page to play again!"
+      `Awesome job, ${playerName}! You won in ${tries} tries and ${timeDiff.toFixed(
+        1
+      )} seconds! Refresh the page to play again!`
     );
+
+    clearInterval(timerInterval);
+  }
+}
+
+function startTimer() {
+  startTime = new Date();
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  if (startTime) {
+    let currentTime = new Date();
+    let elapsedTime = (currentTime - startTime) / 1000;
+  }
 }
