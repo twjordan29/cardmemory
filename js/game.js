@@ -70,5 +70,7 @@ function checkForMatch() {
   }
   flippedCards = [];
   if (matchedCards.length === cardElements.length)
-    toastr["success"]("You won in " + tries + " tries!");
+    toastr["success"](
+      "You won in " + tries + " tries! Refresh the page to play again!"
+    );
 }
