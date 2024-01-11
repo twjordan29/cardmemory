@@ -21,7 +21,7 @@ function startGame(numCards) {
     "user-graduate",
     "truck-monster",
     "tablet-alt",
-  ]; // Replace with your desired icons
+  ];
   for (let i = 0; i < numCards / 2; i++) {
     cards.push(icons[i]);
     cards.push(icons[i]);
@@ -31,7 +31,7 @@ function startGame(numCards) {
 
 function createCards() {
   let gameBoard = document.getElementById("game-board");
-  gameBoard.innerHTML = ""; // Clear the game board
+  gameBoard.innerHTML = "";
   cardElements = [];
   flippedCards = [];
   matchedCards = [];
